@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mau Jadi Pacar Aku? 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffb3d9 50%, #ff80bf 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            animation: float 6s infinite;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .container {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.4);
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            z-index: 10;
+            border: 4px solid #ffb3d9;
+        }
+
+        .cartoon {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            animation: bounce 2s ease-in-out infinite;
+            background: #fff0f6;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .cartoon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            position: relative;
+            z-index: 5;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        h1 {
+            color: #ff1493;
+            margin-bottom: 30px;
+            font-size: 28px;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+            .cartoon {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        .buttons-container {
+            position: relative;
+            min-height: 250px;
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        button {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            padding: 15px 35px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        @media (max-width: 480px) {
+            button {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            color: white;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            border: 3px solid #ff1493;
+        }
+
+        #yesBtn:active {
+            transform: translate(-50%, -50%) scale(0.95);
+        }
+
+        #noBtn {
+            background: linear-gradient(135deg, #ffb3d9 0%, #ffc9e3 100%);
+            color: #ff1493;
+            position: absolute;
+            transition: left 0.3s ease, top 0.3s ease;
+            z-index: 1;
+            border: 2px solid #ffb3d9;
+        }
+
+        #noBtn:active {
+            transform: scale(0.95);
+        }
+
+        .success-message {
+            display: none;
+            animation: popIn 0.5s ease;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .success-message h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #ff1493;
+        }
+
+        .success-message p {
+            font-size: 20px;
+            color: #ff1493;
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 480px) {
+            .success-message h1 {
+                font-size: 28px;
+            }
+            .success-message p {
+                font-size: 18px;
+            }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff69b4;
+            animation: confetti-fall 3s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        .success-cartoon {
+            width: 250px;
+            height: 250px;
+            margin: 20px auto;
+            background: #fff0f6;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .success-cartoon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            position: relative;
+            z-index: 5;
+        }
+
+        @media (max-width: 480px) {
+            .success-cartoon {
+                width: 180px;
+                height: 180px;
+            }
+        }
+
+        .loading-text {
+            color: #ff69b4;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="questionSection">
+            <div class="cartoon">
+                <img src="ChatGPT Image 9 Nov 2025, 06.43.37.png" alt="cute" id="mainCartoon" onerror="this.style.display='none'; this.parentElement.innerHTML='💕';">
+            </div>
+            <h1>Mau jadi pacar aku ga?</h1>
+            <div class="buttons-container">
+                <button id="yesBtn">Iya Dong! 💕</button>
+                <button id="noBtn">Enggak</button>
+            </div>
+        </div>
+
+        <div id="successSection" class="success-message">
+            <div class="cartoon success-cartoon">
+                <img src="ChatGPT Image 9 Nov 2025, 06.47.35.png" alt="celebration" onerror="this.style.display='none'; this.parentElement.innerHTML='🎉💕';">
+            </div>
+            <h1>Yeayy! 🎉</h1>
+            <p>Terima kasih, sayang, sudah mau nerima aku jadi pacarmu. Sejak awal, kamu membawa rasa yang beda. Bukan cuma suka, tapi juga tenang, dan itu yang bikin aku ingin jalanin ini dengan sungguh-sungguh. Aku ingin hubungan ini jadi sesuatu yang kita rawat sama-sama, tempat kita saling tumbuh dan saling jaga.💕</p>
+            <p style="margin-top: 20px; font-size: 22px; font-weight: bold; color: #ff1493;">Loveee youuuu moreee! 💖</p>
+        </div>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const questionSection = document.getElementById('questionSection');
+        const successSection = document.getElementById('successSection');
+        const mainCartoon = document.getElementById('mainCartoon');
+        const buttonsContainer = document.querySelector('.buttons-container');
+        
+        let yesBtnSize = 1;
+        let attempts = 0;
+
+        // Cartoon reactions - cute animated GIFs with fallback
+        const cartoons = [
+            'https://usagif.com/wp-content/uploads/gifs/love-82.gif',
+            'https://usagif.com/wp-content/uploads/gifs/love-45.gif',
+            'https://usagif.com/wp-content/uploads/gifs/love-51.gif',
+            'https://usagif.com/wp-content/uploads/gifs/love-37.gif',
+        ];
+
+        // Generate floating hearts (reduced frequency)
+        setInterval(() => {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = ['💕', '💖', '💗', '💝', '💓', '🌸', '🎀'][Math.floor(Math.random() * 7)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }, 800);
+
+        // Position "No" button initially
+        function positionNoButton() {
+            const containerRect = buttonsContainer.getBoundingClientRect();
+            noBtn.style.right = '20px';
+            noBtn.style.top = '50%';
+            noBtn.style.transform = 'translateY(-50%)';
+        }
+
+        positionNoButton();
+
+        // Make "No" button run away - works on both desktop and mobile
+        function moveNoButton() {
+            attempts++;
+            const containerRect = buttonsContainer.getBoundingClientRect();
+            const containerWidth = containerRect.width;
+            const containerHeight = containerRect.height;
+            
+            // Calculate safe boundaries
+            const maxX = containerWidth - noBtn.offsetWidth - 10;
+            const maxY = containerHeight - noBtn.offsetHeight - 10;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            noBtn.style.right = 'auto';
+            noBtn.style.transform = 'none';
+
+            // Make "Yes" button bigger
+            yesBtnSize += 0.12;
+            yesBtn.style.transform = `translate(-50%, -50%) scale(${yesBtnSize})`;
+
+            // Change cartoon with error handling - keep original image stable
+            if (attempts <= 3) {
+                const cartoonImages = [
+                    'ChatGPT Image 9 Nov 2025, 06.43.37.png',
+                    'ChatGPT Image 9 Nov 2025, 06.43.37.png',
+                    'ChatGPT Image 9 Nov 2025, 06.43.37.png',
+                    'ChatGPT Image 9 Nov 2025, 06.43.37.png'
+                ];
+                // Keep showing the same image to prevent disappearing
+                mainCartoon.src = cartoonImages[0];
+            }
+
+            // Change text on "No" button
+            const noTexts = [
+                'Yakin?', 
+                'Jangan dong!', 
+                'Masa sih? 😢', 
+                'Coba lagi deh!',
+                'Pikir lagi ya!',
+                'Ga mau ah!',
+                'Please? 🙏'
+            ];
+            noBtn.textContent = noTexts[Math.min(attempts - 1, noTexts.length - 1)];
+        }
+
+        // Handle both mouse and touch events
+        noBtn.addEventListener('mouseenter', moveNoButton);
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveNoButton();
+        });
+
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveNoButton();
+        });
+
+        // Success action
+        yesBtn.addEventListener('click', () => {
+            questionSection.style.display = 'none';
+            successSection.style.display = 'block';
+            
+            // Create confetti
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.background = ['#ff69b4', '#ff1493', '#ffc0cb', '#ffb3d9', '#ff80bf'][Math.floor(Math.random() * 5)];
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 30);
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (attempts === 0) {
+                positionNoButton();
+            }
+        });
+    </script>
+</body>
+</html>
